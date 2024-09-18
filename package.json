@@ -1,5 +1,26 @@
 {
-  "dependencies": { "axios": "^1.7.7", "dotenv": "^16.4.5" },
+  "name": "flintmc-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This script scrapes modification data from [flintmc.net](https://flintmc.net) and outputs the fetched information into a file. It uses a cookie-based authentication to interact with the website.",
+  "module": "src/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RappyTV/FlintMC-Scraper.git"
+  },
+  "author": "RappyTV",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RappyTV/FlintMC-Scraper/issues"
+  },
+  "homepage": "https://github.com/RappyTV/FlintMC-Scraper#readme",
+  "scripts": {
+    "start": "bun src/index.ts"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5"
+  },
   "devDependencies": {
     "@types/bun": "^1.1.9"
   }
