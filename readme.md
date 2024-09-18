@@ -46,7 +46,15 @@ cd scraper
 
 Copy the `.env.example` file and name it `.env`. Then please paste your `PHPSESSID` cookie value into the `COOKIE` field.
 
-### 4. Run the Script
+### 4. Install dependencies
+
+You can easily install the dependencies with bun by running this command:
+
+```bash
+bun i
+```
+
+### 5. Run the Script
 
 To run the scraper, use Bun as follows:
 
