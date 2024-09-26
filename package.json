@@ -1,6 +1,6 @@
 {
   "name": "flintmc-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "This script scrapes modification data from [flintmc.net](https://flintmc.net) and outputs the fetched information into a file. It uses a cookie-based authentication to interact with the website.",
   "module": "src/index.ts",
