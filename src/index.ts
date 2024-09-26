@@ -2,7 +2,7 @@ import { Axios } from "axios";
 import Modification from "./Modification";
 import config from "./config";
 
-const axios = new Axios({ baseURL: "https://flintmc.net/", headers: { "Cookie": `PHPSESSID=${config.cookie}` } });
+const axios = new Axios({ baseURL: "https://flintmc.net/", headers: { 'Cookie': `PHPSESSID=${config.cookie}`, 'Accept-Encoding': 'gzip' } });
 
 async function getModificationUrl(id: number): Promise<string | null> {
     try {
@@ -24,7 +24,7 @@ async function getModificationInfo(url: string): Promise<Modification | null> {
     const namespace = getNamespaceByUrl(url);
 
     try {
-        const result = await axios.get(`api/client-store/get-modification/${namespace}`, { headers: { "Accept-Encoding": "gzip" } });
+        const result = await axios.get(`api/client-store/get-modification/${namespace}`);
 
         return JSON.parse(result.data) as Modification;
     } catch(err) {
@@ -38,13 +38,13 @@ async function getModificationInfo(url: string): Promise<Modification | null> {
     for(let i = 1; failedModifications <= config.maxFails; i++) {
         const url = await getModificationUrl(i);
         if(!url) {
-            console.log(`${i}. No addon found`);
             failedModifications++;
             continue;
         }
         failedModifications = 0;
         const info = await getModificationInfo(url);
-        const output = `${i}. ${getNamespaceByUrl(url) || 'Unknown namespace'} - ${info?.name || 'No release channel found'}`
+        const namespace = getNamespaceByUrl(url);
+        const output = `${`${namespace} (https://flintmc.net/modification/${i}.${namespace})` || 'Unknown namespace'} - ${info?.name || 'No release channel found'}`
         modifications.push(output);
         console.log(output);
     }
